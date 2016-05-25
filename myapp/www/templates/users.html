@@ -1,0 +1,11 @@
+<ion-view view-title="Ionic Users">
+  <ion-content>
+    <ion-list>
+      <ion-item class='item-avatar' ng-repeat="user in users"  ng-click='goState(user)'>
+        <img src="img/avatar.jpg">
+        <h2>{{user.name}}</h2>
+        <p>{{user.company.catchPhrase}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

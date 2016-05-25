@@ -1,0 +1,24 @@
+/* Empty. Add your own CSS if you like */
+
+
+/*00CC78 */
+
+.card {
+  text-align: center;
+  border-radius: 15px;
+  padding-bottom: 40px;
+}
+
+.card-header {
+  background-color: #387EF5;
+  height: 100px;
+}
+
+.card-avatar {
+  margin: -50px auto 10px;
+  display: block;
+  padding: 0;
+  max-width: 100px;
+  border: 3px solid #387EF5;
+  border-radius: 50%;
+}
