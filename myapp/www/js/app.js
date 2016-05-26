@@ -41,6 +41,16 @@ angular.module('moviesApp', ['ionic', 'starter.controllers', 'movie'])
     }
   })
 
+  .state('app.upcoming',{
+    url: '/upcoming',
+    views: {
+      'menuContent': {
+        templateUrl: 'js/components/movies/_movies.upcoming.view.html',
+        controller: 'MoviesUpcomingController'
+      }
+    }
+  })
+
   .state('app.movie', {
     url: '/movie',
     params: {

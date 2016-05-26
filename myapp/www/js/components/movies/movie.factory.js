@@ -30,7 +30,6 @@ function MovieFactory($http, $q) {
 
   // funcção de tratamento do sucesso da chamada Http
   function success(response) {
-    console.log('Resposta: ', response);
     // retornando a promise resolvida
     dfd.resolve(response);
   }
