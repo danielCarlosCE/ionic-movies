@@ -1,21 +1,21 @@
 'use strict';
 angular
   // Criando um modulo chamado user e habilitando a injeção de dependêcia
-  .module('user', [])
+  .module('movie', [])
   // atribuindo um controller (primeiro parametro é o nome do controller e o segundo é uma função de mesmo nome)
-  .controller('UserController', UserController)
-// Injetando as dependecias $scope $state e a factory UserFactory dentro do controller
-function UserController($scope, $state, UserFactory) {
+  .controller('MovieController', MovieController)
+  // Injetando as dependecias $scope $state e a factory MovieFactory dentro do controller
+function MovieController($scope, $state, MovieFactory) {
   // Criando uma variavel de scopo chamada users e já atribuindo um valor a ela
-  $scope.users = [];
+  $scope.movies = [];
 
-  function loadUsers() {
+  function loadMovies() {
     // Chamada da factory utilizando promise
-    UserFactory.getUsers()
+    MovieFactory.getMovies()
       .then(
         // função de sucesso
         function(response) {
-          $scope.users = response.data;
+          $scope.movies = response.data.results;
         },
         // função de erro
         function(error) {
@@ -25,11 +25,11 @@ function UserController($scope, $state, UserFactory) {
   }
   // Função que passa um objeto usuario como parametro para a proxima view
   $scope.goState = function(user) {
-    $state.go('app.user', {
+    $state.go('app.movie', {
       'parametro': user
     });
   }
 
-  // Chamada da função loadUsers
-  loadUsers();
+  // Chamada da função loadMovies
+  loadMovies();
 }

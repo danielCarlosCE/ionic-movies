@@ -1,35 +1,30 @@
 'use strict';
 angular
-  .module('user')
-  .factory('UserFactory', UserFactory);
+  .module('movie')
+  .factory('MovieFactory', MovieFactory);
 
-function UserFactory($http, $q) {
+function MovieFactory($http, $q) {
   // URL DA API PARA QUAL VAMOS FAZER CHAMADAS HTTP
-  var URL = 'http://jsonplaceholder.typicode.com/';
+  var apiKey = '?api_key=968cca12b1a8492036b1e1e05af57e3f'
+  var URL = "https://api.themoviedb.org/3/";
+
   // Instanciando
   var dfd = $q.defer();
 
   // Declarando os metodos da factory
   var factory = {
-    getUser: getUser,
-    getUsers: getUsers
+    getMovies: getMovies
   };
 
   return factory;
 
   // Função que retorna os usuario
-  function getUsers() {
+  function getMovies() {
     // Utilizando o modulo $http do angular para fazer o get na api
-    $http.get(URL + 'users')
+    $http.get(URL + 'movie/popular' + apiKey)
       // chamando as funcoes de sucesso e error no tratamento da promise
       .then(success, error)
-    // retornando a promise para o controller
-    return dfd.promise;
-  }
-
-  function getUser(id) {
-    $http.get(URL + 'users/' + id)
-      .then(success, error)
+      // retornando a promise para o controller
     return dfd.promise;
   }
 

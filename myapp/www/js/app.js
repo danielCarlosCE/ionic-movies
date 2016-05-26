@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'user'])
+angular.module('moviesApp', ['ionic', 'starter.controllers', 'movie'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -31,30 +31,29 @@ angular.module('starter', ['ionic', 'starter.controllers', 'user'])
       controller: 'AppController'
     })
 
-  .state('app.users', {
-    url: '/users',
+  .state('app.movies', {
+    url: '/movies',
     views: {
       'menuContent': {
-        templateUrl: 'templates/users.html',
-        controller: 'UserController'
+        templateUrl: 'js/components/movies/_movies.view.html',
+        controller: 'MovieController'
       }
     }
   })
-  // declarando que essa rota vai receber um params chamado parametro e que o seu valor inicial é null
-  //  utilizamos disso para sobrescrever esse valor quando for passada um objeto de um controller para outro
-  .state('app.user', {
-    url: '/user',
+
+  .state('app.movie', {
+    url: '/movie',
     params: {
       parametro: null
     },
     views: {
       'menuContent': {
-        templateUrl: 'templates/user.html',
-        controller: 'UserShowController'
+        templateUrl: 'js/components/movies/_movies.show.view.html',
+        controller: 'MovieShowController'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/users');
+  $urlRouterProvider.otherwise('/app/movies');
 });
