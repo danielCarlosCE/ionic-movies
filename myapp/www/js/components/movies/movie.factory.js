@@ -4,41 +4,53 @@ angular
   .factory('MovieFactory', MovieFactory);
 
 function MovieFactory($http, $q) {
-  // URL DA API PARA QUAL VAMOS FAZER CHAMADAS HTTP
-  var apiKey = '?api_key=968cca12b1a8492036b1e1e05af57e3f'
-  var URL = "https://api.themoviedb.org/3/";
 
-  // Instanciando
-  var dfd = $q.defer();
+  //required in every request
+  var API_KEY = '968cca12b1a8492036b1e1e05af57e3f'
+  var BASE_URL = "https://api.themoviedb.org/3/";
 
-  // Declarando os metodos da factory
+  //public api
   var factory = {
-    getMovies: getMovies
+    getMovies: getMovies,
+    getUpcoming: getUpcoming
   };
 
   return factory;
 
-  // Função que retorna os usuario
+  //return popular movies, 20 per time
   function getMovies() {
-    // Utilizando o modulo $http do angular para fazer o get na api
-    $http.get(URL + 'movie/popular' + apiKey)
-      // chamando as funcoes de sucesso e error no tratamento da promise
-      .then(success, error)
-      // retornando a promise para o controller
-    return dfd.promise;
+    return request('movie/popular');
   }
 
-  // funcção de tratamento do sucesso da chamada Http
-  function success(response) {
-    // retornando a promise resolvida
-    dfd.resolve(response);
+  //return upcoming movies, 20 per time
+  function getUpcoming(){
+    return request('movie/upcoming' );
   }
 
-  // funcção de tratamento do erro da chamada Http
-  function error(err) {
-    console.log('Erro: ', err);
-    // retornando o erro rejeitado pela promise
-    dfd.reject(err);
+  //**** private functions ****
+
+  //returns a promise that will be resolved or rejected (asynchronously) based on the return of $http.get request
+  //resource: to be added to the BASE_URL
+  function request(resource){
+    var deferred = $q.defer();
+    var FINAL_URL = BASE_URL+ resource + '?api_key=' + API_KEY + '&page=1';
+    $http.get(FINAL_URL)
+      .then(
+        //success function
+        function(response){
+          //return the actually resource (e.g. movies), so that the caller can use it right away
+          deferred.resolve(response.data.results);
+        },
+
+        //error function
+        function(error){
+          //propagate the error to the caller
+          deferred.reject(error);
+        });
+    return deferred.promise;
   }
+
+
+
 
 }

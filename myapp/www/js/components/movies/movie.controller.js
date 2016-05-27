@@ -14,8 +14,8 @@ function MovieController($scope, $state, MovieFactory) {
     MovieFactory.getMovies()
       .then(
         // função de sucesso
-        function(response) {
-          $scope.movies = response.data.results;
+        function(movies) {
+          $scope.movies = movies;
         },
         // função de erro
         function(error) {
