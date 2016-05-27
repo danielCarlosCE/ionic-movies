@@ -1,4 +1,11 @@
 <ion-view view-title="Upcoming">
   <ion-content>
+    <div class="row" style="flex-wrap: wrap">
+
+      <div class="col col-50" ng-repeat="movie in movies" >
+        <movie-poster movie="movie"/>
+      </div>
+
+    </div>
   </ion-content>
 </ion-view>

@@ -12,3 +12,24 @@
   font-size: 18px;
   font-weight: bold;
 }
+
+/*movie poster: card that represents a movie*/
+.movie-poster{
+  font-family: "Helvetica Neue Thin";
+}
+.movie-poster .title{
+  margin-bottom: 0px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.movie-poster .subtitle{
+  font-size: 80%;
+  margin-bottom: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.movie-poster hr{
+  width: 50%;
+  border: 1px solid #FF0000;
+  margin: 0px;
+}
