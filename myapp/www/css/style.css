@@ -17,6 +17,10 @@
 .movie-poster{
   font-family: "Helvetica Neue Thin";
 }
+.movie-poster .img-container{
+  height: 220px;
+  overflow: hidden;
+}
 .movie-poster .title{
   margin-bottom: 0px;
   white-space: nowrap;
