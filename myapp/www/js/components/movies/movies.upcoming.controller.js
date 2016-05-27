@@ -3,7 +3,7 @@ angular
   .module('movie')
   .controller('MoviesUpcomingController', MoviesUpcomingController)
 
-function MoviesUpcomingController($scope) {
+function MoviesUpcomingController($scope, $state) {
   //mocked movies for testing view
   $scope.movies = [
     {
@@ -22,4 +22,11 @@ function MoviesUpcomingController($scope) {
       'backdrop_path': 'inVq3FRqcYIRl2la8iZikYYxFNR.jpg'
     }
   ];
+
+  // Função que passa um objeto movie como parametro para a proxima view
+  $scope.goState = function(movie) {
+    $state.go('app.movie-detail', {
+      'movie': movie
+    });
+  }
 }

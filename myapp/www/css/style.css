@@ -33,3 +33,19 @@
   border: 1px solid #FF0000;
   margin: 0px;
 }
+
+/*movie details*/
+.movie-details{
+  font-family: "Helvetica Neue Thin";
+}
+.movie-details .movie-cover{
+  width: 100%;
+  height: 250px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.movie-details .title{
+  margin-bottom: 0px;
+  font-size: 16pt;
+}
