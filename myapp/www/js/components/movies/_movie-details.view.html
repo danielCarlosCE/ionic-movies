@@ -3,16 +3,14 @@
         <button class="button icon ion-social-facebook"></button>
       </ion-nav-buttons>
 
-
       <ion-content class="movie-details">
 
       <div class="movie-cover"
-            ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w370/zSouWWrySXshPCT4t3UKCQGayyo.jpg)'}">
+            ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w370/{{movie.backdrop_path}})'}">
       </div>
-      <p class="title padding">X-Men: Apocalipse</p>
+      <p class="title padding">{{movie.original_title}}</p>
 
-      <p class="overview padding">One year after outwitting the FBI and winning the public’s adulation with their mind-bending spectacles, the Four Horsemen resurface in Now You See Me: The Second Act only to find themselves face to face with a new enemy who enlists them to pull off their most dangerous heist yet.
-      </p>
+      <p class="overview padding">{{movie.overview}}</p>
 
       <ion-content>
 </ion-view>

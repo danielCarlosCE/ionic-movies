@@ -58,7 +58,8 @@ angular.module('moviesApp', ['ionic', 'starter.controllers', 'movie'])
     },
     views: {
       'menuContent': {
-        templateUrl: 'js/components/movies/_movie-details.view.html'
+        templateUrl: 'js/components/movies/_movie-details.view.html',
+        controller: 'MovieDetailsController'
       }
     }
   })
