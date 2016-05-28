@@ -4,10 +4,10 @@
 			<div class="searchTxt" ng-style="{'height': isiOS ? 'calc(100% - 30px)':'calc(100% - 10px)'}">
 		  		<div class="bgdiv"></div>
 		  		<div class="bgtxt">
-		  			<input type="text" placeholder="Search..." ng-model="query">
+		  			<input type="text" placeholder="Search..." ng-model="query.value">
 		  		</div>
 	  		</div>
-				<i class="icon placeholder-icon ion-search" ng-click="search(query)"></i>
+				<i class="icon placeholder-icon ion-search" ng-click="search()"></i>
 		</div>
 	</ion-nav-buttons>
   <ion-content>
@@ -17,6 +17,9 @@
 				<movie-poster movie="movie"/>
 			</div>
 		</div>
+
+		<ion-infinite-scroll on-infinite="search()" distance="1%" ng-if="hasMoreData" immediate-check="false"/>
+
 
   </ion-content>
 </ion-view>
