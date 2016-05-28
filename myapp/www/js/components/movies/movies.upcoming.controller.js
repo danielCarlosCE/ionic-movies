@@ -8,6 +8,7 @@ function MoviesUpcomingController($scope, $state, MovieFactory) {
   $scope.movies = [];
   //loadMore method will increment $scope.page in every call
   $scope.page = 1;
+  //used for telling infiniteScroll when stop loading more
   $scope.hasMoreData = false;
 
   //get movies from factory and append to scope's movies array

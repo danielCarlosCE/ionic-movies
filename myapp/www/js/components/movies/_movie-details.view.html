@@ -6,7 +6,7 @@
       <ion-content class="movie-details">
 
       <div class="movie-cover"
-            ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w370/{{movie.poster_path}})'}">
+            ng-style="{'background-image':'url({{movie.poster_path ? 'http://image.tmdb.org/t/p/w300/'+movie.poster_path : 'img/default-cover.jpg'}})'}">
       </div>
       <p class="title padding">{{movie.title}}</p>
 
