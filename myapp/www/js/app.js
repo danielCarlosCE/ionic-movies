@@ -94,6 +94,18 @@ angular.module('moviesApp', ['ionic', 'starter.controllers', 'movie', 'people'])
         controller: 'PopularPeopleController'
       }
     }
+  })
+  .state('app.person-detail',{
+    url: '/person-detail',
+    params: {
+      person : null
+    },
+    views: {
+      'menuContent': {
+        templateUrl: 'js/components/people/_person-details.view.html',
+        controller: 'PersonDetailsController'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback

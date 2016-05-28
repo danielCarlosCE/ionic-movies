@@ -1,8 +1,7 @@
 'use strict';
 angular
   .module('movie')
-  .factory('MovieFactory', MovieFactory)
-  .factory('NavigationFactory', NavigationFactory);
+  .factory('MovieFactory', MovieFactory);
 
 //factory to query movies using themoviedb API
 function MovieFactory($http, $q) {
@@ -70,23 +69,4 @@ function MovieFactory($http, $q) {
         });
     return deferred.promise;
   }
-
-
-
-
-}
-
-//Helper factory to avoid duplicating navigation code among controllers
-function NavigationFactory($state){
-    var factory = {
-      goMovieDetail: goMovieDetail
-    };
-
-    return factory;
-    //receives a movie and pass it as param to movie-detail page
-    function goMovieDetail(movie){
-      $state.go('app.movie-detail', {
-        'movie': movie
-      });
-    }
 }

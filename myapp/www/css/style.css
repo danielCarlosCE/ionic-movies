@@ -96,3 +96,15 @@ bar.bar-custom, .bar-custom .bar-assertive, .bar-custom .nav-bar-block ion-heade
 .bar-custom.nav-bar-block, .bar-custom.bar {
   background-color: inherit !important;
 }
+
+/*people*/
+.image-circle{
+  display: block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: auto;
+}
