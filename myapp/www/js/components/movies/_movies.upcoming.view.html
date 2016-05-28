@@ -1,12 +1,14 @@
-<ion-view >
+<ion-view>
 <ion-view view-title="Upcoming">
   <ion-content>
-    <div class="row" style="flex-wrap: wrap">
 
+    <div class="row" style="flex-wrap: wrap">
       <div class="col col-50" ng-repeat="movie in movies" ng-click='goState(movie)'>
         <movie-poster movie="movie"/>
       </div>
-
     </div>
+
+    <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="hasMoreData" immediate-check="false"/>
+
   </ion-content>
 </ion-view>

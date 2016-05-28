@@ -18,22 +18,27 @@ function MovieFactory($http, $q) {
   return factory;
 
   //return popular movies, 20 per time
-  function getMovies() {
-    return request('movie/popular');
+  //page: used for pagination
+  function getMovies(page) {
+    return request('movie/popular', page);
   }
 
   //return upcoming movies, 20 per time
-  function getUpcoming(){
-    return request('movie/upcoming' );
+  //page: used for pagination
+  function getUpcoming(page){
+    return request('movie/upcoming', page);
   }
 
   //**** private functions ****
 
   //returns a promise that will be resolved or rejected (asynchronously) based on the return of $http.get request
   //resource: to be added to the BASE_URL
-  function request(resource){
+  function request(resource, page){
+    //default value of 1 if page is undefined
+    page = page ? page : 1;
+    
     var deferred = $q.defer();
-    var FINAL_URL = BASE_URL+ resource + '?api_key=' + API_KEY + '&page=1';
+    var FINAL_URL = BASE_URL+ resource + '?api_key=' + API_KEY + '&page=' + page;
     $http.get(FINAL_URL)
       .then(
         //success function
