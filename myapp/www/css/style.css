@@ -65,7 +65,6 @@
 	left: 50px;
 	width: calc(100% - 100px);
 	position: fixed;
-	height: calc(100% - 10px);
 }
 .searchBar .searchTxt > .bgdiv {
 	background-color: #fff;

@@ -7,30 +7,29 @@ function MoviesSearchController($scope, NavigationFactory, MovieFactory) {
   $scope.navigation = NavigationFactory;
   $scope.movies = [];
   $scope.query = '';
+  $scope.isiOS = ionic.Platform.isIOS();
 
   //load popular movies to start page
   function loadPopular(){
-    MovieFactory.getMovies().then(
-      function success(movies){
-          $scope.movies = movies;
-      },
-      function error(error){
-          console.error(error);
-      }
-    );
+    MovieFactory.getMovies().then(success,error);
   }
   //init page with popular movies
   loadPopular();
 
+  //search movies using query param
   $scope.search = function(query){
-    MovieFactory.search(query).then(
-      function success(movies){
-        $scope.movies = movies;
-      },
-      function error(error){
-        console.error(error);
-      }
-    );
+    //make sure query is not empty
+    if (!query){
+      return;
+    }
+    MovieFactory.search(query).then(success,error);
+  }
+
+  function success(movies){
+    $scope.movies = movies;
+  }
+  function error(error){
+    console.error(error);
   }
 
 }
