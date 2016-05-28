@@ -1,9 +1,12 @@
 <ion-view view-title="">
-      <ion-nav-buttons side="right">
-        <button class="button icon ion-social-facebook" ng-click="shareViaFacebook()"></button>
-      </ion-nav-buttons>
+      <ion-nav-bar class="bar-custom bar-assertive ">
+            <ion-nav-back-button></ion-nav-back-button>
+            <ion-nav-buttons side="right">
+              <button class="button icon ion-social-facebook" ng-click="shareViaFacebook()"></button>
+            </ion-nav-buttons>
+      </ion-nav-bar>
 
-      <ion-content class="movie-details">
+      <div class="movie-details">
 
       <div class="movie-cover"
             ng-style="{'background-image':'url({{movie.poster_path ? 'http://image.tmdb.org/t/p/w300/'+movie.poster_path : 'img/default-cover.jpg'}})'}">
@@ -12,5 +15,5 @@
 
       <p class="overview padding">{{movie.overview}}</p>
 
-      </ion-content>
+      </div>
 </ion-view>
