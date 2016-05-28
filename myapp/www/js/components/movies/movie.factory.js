@@ -1,8 +1,10 @@
 'use strict';
 angular
   .module('movie')
-  .factory('MovieFactory', MovieFactory);
+  .factory('MovieFactory', MovieFactory)
+  .factory('NavigationFactory', NavigationFactory);
 
+//factory to query movies using themoviedb API
 function MovieFactory($http, $q) {
 
   //required in every request
@@ -36,7 +38,7 @@ function MovieFactory($http, $q) {
   function request(resource, page){
     //default value of 1 if page is undefined
     page = page ? page : 1;
-    
+
     var deferred = $q.defer();
     var FINAL_URL = BASE_URL+ resource + '?api_key=' + API_KEY + '&page=' + page;
     $http.get(FINAL_URL)
@@ -58,4 +60,19 @@ function MovieFactory($http, $q) {
 
 
 
+}
+
+//Helper factory to avoid duplicating navigation code among controllers
+function NavigationFactory($state){
+    var factory = {
+      goMovieDetail: goMovieDetail
+    };
+
+    return factory;
+    //receives a movie and pass it as param to movie-detail page
+    function goMovieDetail(movie){
+      $state.go('app.movie-detail', {
+        'movie': movie
+      });
+    }
 }

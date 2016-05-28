@@ -3,7 +3,10 @@ angular
   .module('movie')
   .controller('MoviesUpcomingController', MoviesUpcomingController)
 
-function MoviesUpcomingController($scope, $state, MovieFactory) {
+function MoviesUpcomingController($scope, $state, MovieFactory, NavigationFactory) {
+  //to use navigation util methods
+  $scope.navigation = NavigationFactory;
+
   //mocked movies for testing view
   $scope.movies = [];
   //loadMore method will increment $scope.page in every call
@@ -39,10 +42,4 @@ function MoviesUpcomingController($scope, $state, MovieFactory) {
     load();
   }
 
-  // Get the movie param and send it to movie-detail page
-  $scope.goState = function(movie) {
-    $state.go('app.movie-detail', {
-      'movie': movie
-    });
-  }
 }

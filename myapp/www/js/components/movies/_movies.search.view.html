@@ -4,14 +4,19 @@
 			<div class="searchTxt">
 		  		<div class="bgdiv"></div>
 		  		<div class="bgtxt">
-		  			<input type="text" placeholder="Search...">
+		  			<input type="text" placeholder="Search..." ng-model="query">
 		  		</div>
 	  		</div>
-				<i class="icon placeholder-icon ion-search" ng-click=""></i>
+				<i class="icon placeholder-icon ion-search" ng-click="search(query)"></i>
 		</div>
 	</ion-nav-buttons>
   <ion-content>
 
+		<div class="row" style="flex-wrap: wrap">
+			<div class="col col-50" ng-repeat="movie in movies" ng-click='navigation.goMovieDetail(movie)'>
+				<movie-poster movie="movie"/>
+			</div>
+		</div>
 
   </ion-content>
 </ion-view>
