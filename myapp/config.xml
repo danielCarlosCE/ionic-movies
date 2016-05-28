@@ -38,4 +38,5 @@
     <icon src="resources/ios/icon/icon-small@3x.png" width="87" height="87"/>
   </platform>
   <icon src="resources/ios/icon/icon-small@3x.png"/>
+  <plugin name="cordova-plugin-x-socialsharing" spec="~5.1.0"/>
 </widget>
