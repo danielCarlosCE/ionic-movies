@@ -1,4 +1,20 @@
-<ion-view view-title="{{person.name}}">
-  <ion-content >    
-  </ion-content>
+<ion-view>
+
+  <ion-nav-bar class="bar-custom bar-assertive ">
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
+  <div class="person-details">
+    <div class="cover-image" ng-style="{'background-image':'url(' + coverPhotoUrl + ')'}"></div>
+    <div class="profile-image">
+      <div class="image-circle" ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w300/{{person.profile_path}})'}">
+    </div>
+    <p class="person-name padding">
+      {{person.name}}
+    </p>
+    <p class="biography padding">
+      {{person.biography}}
+    </p>
+  </div>
+
+
 </ion-view>

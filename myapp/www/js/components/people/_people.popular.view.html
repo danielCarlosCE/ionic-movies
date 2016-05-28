@@ -2,7 +2,7 @@
   <ion-content >
     <div class="row" style="flex-wrap: wrap">
       <div class="col-33" ng-repeat="person in people" ng-click="navigation.goPersonDetail(person)">
-        <div class="image-circle" ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w300/{{person.profile_path}})'}">
+        <div class="image-center image-circle" ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w300/{{person.profile_path}})'}">
         </div>
         <p style="text-align: center;">{{person.name}}</p>
       </div>

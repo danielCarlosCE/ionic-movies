@@ -1,21 +1,20 @@
 'use strict';
 
 //declaring people module
-var peopleModule = angular.module('people',['navigation']);
+var peopleModule = angular.module('people',['navigation','request']);
 
 peopleModule.controller('PopularPeopleController',PopularPeopleController);
 
 function PopularPeopleController($scope, PeopleFactory, NavigationFactory){
     $scope.navigation = NavigationFactory;
-    $scope.people = [
-        {  name: 'Scarlett Johansson',
-           profile_path: '/8EueDe6rPF0jQU4LSpsH2Rmrqac.jpg'
+    $scope.people = [];
+
+    PeopleFactory.getPopularPeople().then(
+        function(people){
+            $scope.people = people;
         },
-        {  name: 'Chris Evans',
-           profile_path: '/kRlx7PxXkom7Daj8Z2HmcbPQB1o.jpg'
-        },
-        {  name: 'Shu Qi',
-           profile_path: '/tDPS8QHdOmdmu400haPcYum8BHC.jpg'
+        function(error){
+            console.log(error);
         }
-    ];
+    );
 }

@@ -4,11 +4,7 @@ angular
   .factory('MovieFactory', MovieFactory);
 
 //factory to query movies using themoviedb API
-function MovieFactory($http, $q) {
-
-  //required in every request
-  var API_KEY = '968cca12b1a8492036b1e1e05af57e3f'
-  var BASE_URL = "https://api.themoviedb.org/3/";
+function MovieFactory(RequestFactory) {
 
   //public api
   var factory = {
@@ -22,51 +18,17 @@ function MovieFactory($http, $q) {
   //return popular movies, 20 per time
   //page: used for pagination
   function getMovies(page) {
-    return request('movie/popular', page);
+    return RequestFactory.request('movie/popular', page);
   }
 
   //return upcoming movies, 20 per time
   //page: used for pagination
   function getUpcoming(page){
-    return request('movie/upcoming', page);
+    return RequestFactory.request('movie/upcoming', page);
   }
 
   function search(query, page){
-    return request('search/movie',page, [{key:'query',value: query}]);
+    return RequestFactory.request('search/movie',page, [{key:'query',value: query}]);
   }
 
-  //**** private functions ****
-
-  //returns a promise that will be resolved or rejected (asynchronously) based on the return of $http.get request
-  //resource: to be added to the BASE_URL
-  function request(resource, page, extraParams){
-    //default value of 1 if page is undefined
-    page = page ? page : 1;
-
-    var deferred = $q.defer();
-    var FINAL_URL = BASE_URL+ resource + '?api_key=' + API_KEY + '&page=' + page;
-    //add any extra params added
-    if ( extraParams ) {
-      extraParams.forEach(function(param){
-        //make sure the param has key and value properties
-        if(param.key && param.value){
-          FINAL_URL += '&'+param.key+'='+param.value ;
-        }
-      });
-    }
-    $http.get(FINAL_URL)
-      .then(
-        //success function
-        function(response){
-          //return the actually resource (e.g. movies), so that the caller can use it right away
-          deferred.resolve(response.data.results);
-        },
-
-        //error function
-        function(error){
-          //propagate the error to the caller
-          deferred.reject(error);
-        });
-    return deferred.promise;
-  }
 }
