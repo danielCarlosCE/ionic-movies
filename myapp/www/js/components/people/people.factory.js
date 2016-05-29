@@ -14,8 +14,8 @@ function PeopleFactory(RequestFactory){
 
   return factory;
 
-  function getPopularPeople(){
-    return RequestFactory.request('person/popular');
+  function getPopularPeople(page){
+    return RequestFactory.request('person/popular',page);
   }
 
   function getPerson(personId){

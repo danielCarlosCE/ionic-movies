@@ -7,5 +7,6 @@
         <p style="text-align: center;">{{person.name}}</p>
       </div>
     </div>
+    <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="hasMoreData" immediate-check="false"/>
   </ion-content>
 </ion-view>
