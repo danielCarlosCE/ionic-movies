@@ -1,18 +1,3 @@
-/* Empty. Add your own CSS if you like */
-
-.caption {
-  height: 70px;
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  margin-top: -75px;
-  z-index: 9999;
-  display: block;
-  position: relative;
-  padding: 20px;
-  font-size: 18px;
-  font-weight: bold;
-}
-
 /*movie poster: card that represents a movie*/
 .movie-poster{
   font-family: "Helvetica Neue Thin";
