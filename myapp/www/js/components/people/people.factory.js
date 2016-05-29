@@ -8,7 +8,8 @@ peopleModule.factory('PeopleFactory',PeopleFactory);
 function PeopleFactory(RequestFactory){
   var factory = {
     getPopularPeople: getPopularPeople,
-    getPerson: getPerson
+    getPerson: getPerson,
+    searchPeople: search
   };
 
   return factory;
@@ -20,5 +21,10 @@ function PeopleFactory(RequestFactory){
   function getPerson(personId){
     return RequestFactory.request('person/'+personId,1, [{key:'append_to_response',value: 'images'}]);
   }
+
+  function search(query, page){
+    return RequestFactory.request('search/person',page, [{key:'query',value: query}]);
+  }
+
 
 }

@@ -10,16 +10,18 @@
 				<i class="icon placeholder-icon ion-search" ng-click="searchFactory.search()"></i>
 		</div>
 	</ion-nav-buttons>
-  <ion-content>
 
+	<ion-content >
 		<div class="row" style="flex-wrap: wrap">
-			<div class="col col-50" ng-repeat="movie in searchFactory.data" ng-click='navigation.goMovieDetail(movie)'>
-				<movie-poster movie="movie"/>
+			<div class="col-33" ng-repeat="person in searchFactory.data" ng-click="navigation.goPersonDetail(person)">
+				<div class="image-center image-circle" ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w300/{{person.profile_path}})'}">
+				</div>
+				<p style="text-align: center;">{{person.name}}</p>
 			</div>
 		</div>
 
 		<ion-infinite-scroll on-infinite="searchFactory.search()" distance="1%" ng-if="searchFactory.hasMoreData" immediate-check="false"/>
 
+	</ion-content>
 
-  </ion-content>
 </ion-view>

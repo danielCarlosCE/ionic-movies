@@ -95,6 +95,15 @@ angular.module('moviesApp', ['ionic', 'starter.controllers', 'movie', 'people'])
       }
     }
   })
+  .state('app.people-search', {
+    url: '/people-search',
+    views: {
+      'menuContent': {
+        templateUrl: 'js/components/people/_people.search.view.html',
+        controller: 'PeopleSearchController'
+      }
+    }
+  })
   .state('app.person-detail',{
     url: '/person-detail',
     params: {

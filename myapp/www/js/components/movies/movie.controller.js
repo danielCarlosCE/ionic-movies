@@ -1,7 +1,7 @@
 'use strict';
 angular
   // Criando um modulo chamado user e habilitando a injeção de dependêcia
-  .module('movie', ['ngCordova','navigation', 'request'])
+  .module('movie', ['ngCordova','navigation', 'request', 'search'])
   // atribuindo um controller (primeiro parametro é o nome do controller e o segundo é uma função de mesmo nome)
   .controller('MovieController', MovieController)
   // Injetando as dependecias $scope $state e a factory MovieFactory dentro do controller

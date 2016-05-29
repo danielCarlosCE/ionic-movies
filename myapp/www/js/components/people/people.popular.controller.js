@@ -1,7 +1,7 @@
 'use strict';
 
 //declaring people module
-var peopleModule = angular.module('people',['navigation','request']);
+var peopleModule = angular.module('people',['navigation','request','search']);
 
 peopleModule.controller('PopularPeopleController',PopularPeopleController);
 
