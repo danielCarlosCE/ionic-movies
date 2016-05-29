@@ -2,9 +2,9 @@
 //creating the movie module and injecting needed modules
 var movieModule = angular.module('movie', ['ngCordova','navigation', 'request', 'search']);
 
-movieModule.controller('MovieController', MovieController);
+movieModule.controller('MoviesBaseController', MoviesBaseController);
 
-function MovieController($scope,MovieFactory,NavigationFactory) {
+function MoviesBaseController($scope,MovieFactory,NavigationFactory) {
   //to use navigation util methods
   $scope.navigation = NavigationFactory;
 
@@ -22,10 +22,9 @@ function MovieController($scope,MovieFactory,NavigationFactory) {
     load();
   }
 
-  //get movies from factory and append to scope's movies array
+  //used to get movies - should be declared in 'child' controller
   function load(){
-    MovieFactory.getMovies($scope.page)
-                .then(success,error);
+    $scope.load($scope.page).then(success,error);
   }
 
   //load the first page
@@ -35,7 +34,7 @@ function MovieController($scope,MovieFactory,NavigationFactory) {
     //append new array to current movies array
     $scope.movies = $scope.movies.concat(movies);
 
-    //after last page the result will be an empty array and we don't need load anymore
+    //after last page the result will be an empty array and we don't need $scope.load anymore
     $scope.hasMoreData = movies.length > 0;
 
     //inform that the load is done and the infiniteScroll can complete
@@ -45,5 +44,4 @@ function MovieController($scope,MovieFactory,NavigationFactory) {
   function error(error){
     console.error(error);
   }
-
 }

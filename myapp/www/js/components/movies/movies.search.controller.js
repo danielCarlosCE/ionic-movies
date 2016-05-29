@@ -1,7 +1,7 @@
 'use strict';
-angular
-  .module('movie')
-  .controller('MoviesSearchController', MoviesSearchController)
+var movieModule = angular.module('movie');
+
+movieModule.controller('MoviesSearchController', MoviesSearchController)
 
 function MoviesSearchController($scope, $ionicScrollDelegate, NavigationFactory, MovieFactory, SearchFactory) {
   $scope.navigation = NavigationFactory;
