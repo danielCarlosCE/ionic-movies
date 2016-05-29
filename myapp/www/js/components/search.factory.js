@@ -6,55 +6,75 @@ var searchModule = angular.module('search',[]);
 searchModule.factory('SearchFactory',SearchFactory);
 
 function SearchFactory($ionicScrollDelegate){
-  var factory = {
-    data : [],
+  var FactoryInstance = function(){
+    this.data  = [],
     //using object, so that text input can work with two way data binding
-    query : {'value': ''},
+    this.query  = {'value' : ''},
     //to check if query changed
-    lastQuery : {'value': ''},
+    this.lastQueryValue  = '',
     //search method will increment it in every call
-    page : 0,
+    this.page  = 0,
     //used for telling infiniteScroll when stop loading more
-    hasMoreData : false,
+    this.hasMoreData  = false,
     //search method
-    search : search,
+    this.search  = search,
     //method to be overwriten, should receive query and page as parameter
-    queryData : queryData,
+    this.queryData  = queryData,
     //will be called whenever the query completes
-    queryHasCompleted: queryHasCompleted
+    this.queryHasCompleted = queryHasCompleted,
+    //called when query successfully completes
+    this.querySuccess = querySuccess,
+    // called when query completes with error
+    this.queryError = queryError
+  };
+  function getInstance(){
+    return new FactoryInstance();
+  }
+
+  var factory = {
+    getInstance: getInstance
   };
   return factory;
 
   //will be called by searchbar
   function search(){
     //make sure query is not empty
-    if (!factory.query.value) {
+    if (!this.query.value) {
       return;
     }
     //if query has changed, return to page 1, else increment it
-    factory.page = (factory.query == factory.lastQuery) ?  factory.page + 1 : 1;
+    this.page = (this.query.value == this.lastQueryValue) ?  this.page + 1 : 1;
 
-    factory.queryData(factory.query.value,factory.page).then(success, error);
+    var refThis = this;
+    this.queryData(this.query.value,this.page)
+        .then(function(newData){
+          refThis.querySuccess(newData);
+        }, function(error){
+          refThis.queryError(error);
+        });
   }
 
-  function success(newData){
+  function querySuccess(newData){
+    console.log(this.query);
     //if query hasn't change, just append new array, else replace the current with the new
-    if(factory.query == factory.lastQuery){
+    if(this.query.value == this.lastQueryValue){
+      console.log('same query');
       //append new array to current array
-      factory.data = factory.data.concat(newData);
+      this.data = this.data.concat(newData);
     }else{
-      factory.lastQuery = factory.query;
-      factory.data = newData;
+      console.log('new query');
+      this.lastQueryValue = this.query.value;
+      this.data = newData;
       $ionicScrollDelegate.scrollTop();
     }
 
     //after last page the result will be an empty array and we don't need load anymore
-    factory.hasMoreData = newData.length > 0;
+    this.hasMoreData = newData.length > 0;
 
-    factory.queryHasCompleted();
+    this.queryHasCompleted();
   }
 
-  function error(error){
+  function queryError(error){
     console.error(error);
   }
 

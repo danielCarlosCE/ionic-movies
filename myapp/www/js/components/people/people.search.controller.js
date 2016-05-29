@@ -7,7 +7,10 @@ peopleModule.controller('PeopleSearchController',PeopleSearchController);
 
 function PeopleSearchController($scope, PeopleFactory,NavigationFactory, SearchFactory){
     $scope.navigation = NavigationFactory;
-    $scope.searchFactory = SearchFactory;
+    $scope.searchFactory = SearchFactory.getInstance();
+
+    //to change layout dynamically
+    $scope.isiOS = ionic.Platform.isIOS();
 
     //function that will be called when user searches
     $scope.searchFactory.queryData = PeopleFactory.searchPeople;
