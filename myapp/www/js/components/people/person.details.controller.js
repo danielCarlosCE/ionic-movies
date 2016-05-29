@@ -13,7 +13,16 @@ function PersonDetailsController($scope, $stateParams, $ionicScrollDelegate,Peop
 
     function success(person){
         $scope.person = person;
-        $scope.coverPhotoUrl = 'http://image.tmdb.org/t/p/w500/'+person.images.profiles[1].file_path;
+        //check if person has profile images
+        if (person.images.profiles.length > 0){
+          //if it has more than one, use the second as cover image, otherwise, use the first
+          var hasMoreThanOneImage = person.images.profiles.length > 1;
+          var coverImage = hasMoreThanOneImage ? person.images.profiles[1] : person.images.profiles[0];
+          $scope.coverPhotoUrl = 'http://image.tmdb.org/t/p/w500/'+coverImage.file_path;
+        }else{
+          //use a default image when person has no profile image
+          $scope.coverPhotoUrl  = 'img/no-picture.jpg'
+        }
         //force recalculating the scroll size
         $ionicScrollDelegate.resize();
 

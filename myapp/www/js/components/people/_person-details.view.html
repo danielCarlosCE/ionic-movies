@@ -3,12 +3,17 @@
   <ion-nav-bar class="bar-custom bar-assertive ">
     <ion-nav-back-button></ion-nav-back-button>
   </ion-nav-bar>
-  
+
   <div class="scroll-content ionic-scroll overflow-scroll">
     <div class="person-details">
       <div class="cover-image" ng-style="{'background-image':'url(' + coverPhotoUrl + ')'}"></div>
       <div class="profile-image">
-        <div class="image-circle" ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w300/{{person.profile_path}})'}">
+        <div class="image-circle"
+              ng-style="{'background-image':
+                          (person.profile_path)
+                          ? 'url(http://image.tmdb.org/t/p/w300/{{person.profile_path}})'
+                          : 'url(img/no-picture.jpg)'
+                        }">
         </div>
     </div>
       <p class="person-name padding">
