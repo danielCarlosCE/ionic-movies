@@ -1,0 +1,9 @@
+<div class="searchBar">
+  <div class="searchTxt" ng-style="{'height': isiOS ? 'calc(100% - 30px)':'calc(100% - 10px)'}">
+      <div class="bgdiv"></div>
+      <div class="bgtxt">
+        <input type="text" placeholder="Search..." ng-model="searchFactory.query.value" ng-enter="searchFactory.search()">
+      </div>
+    </div>
+    <i class="icon placeholder-icon ion-search" ng-click="searchFactory.search()"></i>
+</div>
