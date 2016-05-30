@@ -20,4 +20,6 @@ It uses *npm* and *bower* as its main package managers. For cordova pluggins, a 
 * Person Details
 
 
-'
+#Demo
+[Video Demo](https://www.dropbox.com/s/5cphi1eh1okylbf/Ionic%20Movies.mp4?dl=0)
+
