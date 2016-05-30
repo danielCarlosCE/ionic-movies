@@ -4,8 +4,8 @@ var navigationModule = angular.module('request',[]);
 
 navigationModule.factory('RequestFactory',RequestFactory);
 
-//required in every request
-var API_KEY = '968cca12b1a8492036b1e1e05af57e3f'
+//required in every request (using danielcarlos api_key)
+var API_KEY = '5e96343f45caede8e82f40f1f45c8a25'
 var BASE_URL = "https://api.themoviedb.org/3/";
 
 //Helper factory to avoid duplicating navigation code among controllers
