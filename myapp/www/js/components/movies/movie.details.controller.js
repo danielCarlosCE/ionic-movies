@@ -1,10 +1,10 @@
 'use strict';
-angular
-  .module('movie')
-  .controller('MovieDetailsController', MovieDetailsController)
+var movieModule = angular.module('movie');
+
+movieModule.controller('MovieDetailsController', MovieDetailsController)
 
 function MovieDetailsController($scope, $stateParams, $cordovaSocialSharing) {
-  
+
   //assign the attribute, passed by previous page, to scope variable
   $scope.movie = $stateParams.movie;
 
